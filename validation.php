@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $username = "root";
     $password = "";
     $server = "localhost";
@@ -11,16 +13,19 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $username = $_POST['username'];
+        $user = $_POST['username'];
         $password = $_POST['password'];
     }
 
-    $result = $conn->query("select pass from users where username='$username'");
+    $result = $conn->query("select pass from users where username='$user'");
 
     $checkPassword = $result->fetch_assoc();
 
     if($password == $checkPassword['pass']){
         echo "Login Successful";
+        $_SESSION["loggedInUser"] = $user;
+        echo $user;
+        echo "<button onclick=\"window.location='flight-booking.php'\">HOME</button>";
     }
     else{
         echo "Login Failed";

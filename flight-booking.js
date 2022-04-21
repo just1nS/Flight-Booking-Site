@@ -1,1 +1,5 @@
 loggedIn = false;
+
+function bookFlight(){
+    
+}

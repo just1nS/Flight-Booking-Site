@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if($_SESSION["loggedInUser"] != NULL){
+        $user = $_SESSION["loggedInUser"];
+    }
+    else{
+        $user = NULL;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,30 +37,38 @@
         else{ 
             echo "Error in ".$sql." ".$conn->error;
         }
-
-        if($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()){
         ?>
+
         <div>
+            <?php
+                echo $user;
+            ?>
             <table>
                 <tr>
-                    <td>Flight No.</td>
-                    <td>Destination</td>
-                    <td>Deprt.</td>
-                    <td>Arvl.</td>
+                    <td><h3>Flight No.</h3></td>
+                    <td><h3>Destination</h3></td>
+                    <td><h3>Deprt.</h3></td>
+                    <td><h3>Arvl.</h3></td>
                 </tr>
+                <?php
+                    if($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()){
+                ?>
                 <tr>
                     <td><?php echo $row["flightNo"]?></td>
                     <td><?php echo $row["destination"]?></td>
                     <td><?php echo $row["origin"]?></td>
                     <td><?php echo $row["departTime"]?></td>
                     <td><?php echo $row["arrivalTime"]?></td>
+                    <td></td>
                 </tr>
+                <?php
+                      }
+                    }
+                ?>
             </table>
         </div>
         <?php 
-                    }
-                }
             $conn->close();
         ?>
     </body>

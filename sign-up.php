@@ -12,7 +12,7 @@
 
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $username = $_POST['username'];
+        $user = $_POST['username'];
         $pass = $_POST['password'];
         $email = $_POST['email'];
         $address = $_POST['address'];
@@ -24,11 +24,29 @@
     }
 
     
-    $insertIntoUsers = "INSERT INTO users VALUES('$username', '$pass', '$email');";
-    $insertIntoBilling = "INSERT INTO billing VALUES('$address', '$city', '$cState', '$zip', '$username', '$firstName', '$lastName');";
+    $insertIntoUsers = "insert into users values('$user', '$pass', '$email');";
+    $insertIntoBilling = "insert into billing values('$address', '$city', '$cState', '$zip', '$username', '$firstName', '$lastName');";
 
     $conn->query($insertIntoUsers);
     $conn->query($insertIntoBilling);
       
     $conn->close()
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div>
+            <div>
+                <h2>Signed Up Successfully!</h2>
+            </div>
+            <div>
+                <button onclick="window.location='login.html'">LOGIN NOW</button>
+            </div>
+        </div>
+    </body>
+</html>
