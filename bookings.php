@@ -1,6 +1,14 @@
 <?php
     session_start();
 
+    if(!isset($_SESSION["loggedInUser"])){
+        header('location: /login.html', true, 301);
+        exit();
+    }
+    else{
+        $user = $_SESSION["loggedInUser"];
+    }
+
     $username = "root";
     $password = "";
     $server = "localhost";
@@ -12,16 +20,9 @@
         die("Conenction Failed: " . $conn->connect_error);
     }
 
-    //SELECT flights.flightNo, destination, origin, departTime, arrivalTime 
-    //FROM bookings, flights
-    //WHERE bookings.username = '$user' AND bookings.flightNo = flights.FlightNo
-
-    $sql = "select * from bookings";
+    $sql = "select flights.flightNo, destination, origin, departTime, arrivalTime from bookings, flights where bookings.username = '$user' and bookings.flightNo = flights.FlightNo;";
 
     $result = $conn->query($sql);
-
-    if($results){
-        while($row = $results->fetch_assoc()){
     
 ?>
 
@@ -39,16 +40,35 @@
             <div>
                 <table>
                     <tr>
-                        <td></td>
+                        <td><h3>Flight No.</h3></td>
+                        <td><h3>Destination</h3></td>
+                        <td><h3>Deprt.</h3></td>
+                        <td><h3>Arvl.</h3></td>
                     </tr>
+                    <?php
+                        if($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()){
+                    ?>
+                    <tr>
+                        <td><?php echo $row["flightNo"]?></td>
+                        <td><?php echo $row["destination"]?></td>
+                        <td><?php echo $row["origin"]?></td>
+                        <td><?php echo $row["departTime"]?></td>
+                        <td><?php echo $row["arrivalTime"]?></td>
+                    </tr>
+                    <?php
+                            }
+                        }
+                    ?>
                 </table>
             </div>
         </div>
 
         <?php
-                }
-            }
             $conn->close();
         ?>
+        
+        <button onclick="window.location='flight-booking.php'">HOME</button>
+
     </body>
 </html>

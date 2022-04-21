@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION["loggedInUser"] != NULL){
+    if(isset($_SESSION["loggedInUser"])){
         $user = $_SESSION["loggedInUser"];
     }
     else{
@@ -39,10 +39,24 @@
         }
         ?>
 
+        <div class="navbar">
+            <div class="navLinks">
+                <a href="/flight-booking.php">Flight Booking</a>
+                <a href="/bookings.php">Your Bookings</a>
+            </div>
+            <div class="account">
+                <?php 
+                    if(isset($user)){
+                        echo $user;
+                        echo "<a href=\"logout.php\">Log Out</a>";
+                    }
+                    else{
+                        echo "<a href=\"login.html\">Log In</a>";
+                    }?>
+            </div>
+        </div>
+
         <div>
-            <?php
-                echo $user;
-            ?>
             <table>
                 <tr>
                     <td><h3>Flight No.</h3></td>
@@ -60,7 +74,12 @@
                     <td><?php echo $row["origin"]?></td>
                     <td><?php echo $row["departTime"]?></td>
                     <td><?php echo $row["arrivalTime"]?></td>
-                    <td></td>
+                    <td>
+                        <form action="/bookingValidation.php" method="post">
+                            <input type="hidden" name="flightNo" id="flightNo" value="<?php echo $row["flightNo"]?>">
+                            <input type="submit" name="submit" value="BOOK">
+                        </form>
+                    </td>
                 </tr>
                 <?php
                       }
