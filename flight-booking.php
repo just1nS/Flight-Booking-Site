@@ -12,6 +12,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <script src="flight-booking.js"></script>
     </head>
     <body>
     <?php
@@ -40,15 +41,15 @@
         ?>
 
         <div class="navbar">
-            <div class="navLinks">
-                <a href="/flight-booking.php">Flight Booking</a>
-                <a href="/bookings.php">Your Bookings</a>
-            </div>
-            <div class="account">
+            <a href="/flight-booking.php">Flight Booking</a>
+            <a href="/bookings.php">Your Bookings</a>
+            <div class="dropMenu">
                 <?php 
                     if(isset($user)){
-                        echo $user;
-                        echo "<a href=\"logout.php\">Log Out</a>";
+                        echo "<button onclick=\"openDropMenu()\" class=\"dropButton\">$user</button>";
+                        echo "<div id=\"dropMenuLinks\" class=\"drop-Content\">";
+                        echo    "<a href=\"logout.php\">Log Out</a>";
+                        echo "</div>";
                     }
                     else{
                         echo "<a href=\"login.html\">Log In</a>";
