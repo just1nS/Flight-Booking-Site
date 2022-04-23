@@ -52,7 +52,7 @@
                         echo "</div>";
                     }
                     else{
-                        echo "<a href=\"login.html\">Log In</a>";
+                        echo "<a href=\"login.php\">Log In</a>";
                     }?>
             </div>
         </div>

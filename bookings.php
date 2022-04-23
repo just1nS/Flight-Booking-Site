@@ -2,7 +2,7 @@
     session_start();
 
     if(!isset($_SESSION["loggedInUser"])){
-        header('location: /login.html', true, 301);
+        header('location: /login.php', true, 301);
         exit();
     }
     else{

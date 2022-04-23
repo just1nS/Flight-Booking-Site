@@ -45,7 +45,7 @@
                 <h2>Signed Up Successfully!</h2>
             </div>
             <div>
-                <button onclick="window.location='login.html'">LOGIN NOW</button>
+                <button onclick="window.location='login.php'">LOGIN NOW</button>
             </div>
         </div>
     </body>

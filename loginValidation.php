@@ -17,18 +17,27 @@
         $password = $_POST['password'];
     }
 
+
     $result = $conn->query("select pass from users where username='$user'");
 
     $checkPassword = $result->fetch_assoc();
 
-    if($password == $checkPassword['pass']){
-        echo "Login Successful";
-        $_SESSION["loggedInUser"] = $user;
-        echo $user;
-        echo "<button onclick=\"window.location='flight-booking.php'\">HOME</button>";
+    if ($result->num_rows> 0){
+        if($password == $checkPassword['pass']){
+            //Login Successful
+            $_SESSION["loggedInUser"] = $user;
+            header('location: /flight-booking.php', true, 301);
+        }
+        else{
+            //Login Failed
+            $_SESSION["loginerror"] = TRUE;
+            header('location: /login.php', true, 301);
+        }
     }
     else{
-        echo "Login Failed";
+        //Login Failed
+        $_SESSION["loginerror"] = TRUE;
+        header('location: /login.php', true, 301);
     }
 
     $conn->close();
