@@ -39,14 +39,13 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <div>
-            <div>
-                <h2>Signed Up Successfully!</h2>
-            </div>
-            <div>
-                <button onclick="window.location='login.php'">LOGIN NOW</button>
-            </div>
+    <body>  
+        <div class="sidebanner"></div>
+        <div class="registration-success">
+            <h1 class="registration-header">Signed Up Successfully!</h1>
+            <button class="back-to-login" onclick="window.location='login.php'">Login</button>
+        </div>
+        <div class="blue-sidebar"></div>
         </div>
     </body>
 </html>
