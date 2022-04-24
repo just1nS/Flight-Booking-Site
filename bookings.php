@@ -31,44 +31,56 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <script src="flight-booking.js"></script>
     </head>
     <body>
         <div>
-            <div>
-                <h2>Your Bookings</h2>
+        <div class="navbar">
+            <a href="/flight-booking.php">Flight Booking</a>
+            <a class="active" href="/bookings.php">Your Bookings</a>
+            <div class="dropMenu">
+                <?php 
+                    if(isset($user)){
+                        echo "<button onclick=\"openDropMenu()\" class=\"dropButton\">$user</button>";
+                        echo "<div id=\"dropMenuLinks\" class=\"drop-Content\">";
+                        echo    "<a href=\"logout.php\">Log Out</a>";
+                        echo "</div>";
+                    }
+                    else{
+                        echo "<a href=\"login.php\">Log In</a>";
+                    }?>
             </div>
-            <div>
-                <table>
-                    <tr>
-                        <td><h3>Flight No.</h3></td>
-                        <td><h3>Destination</h3></td>
-                        <td><h3>Deprt.</h3></td>
-                        <td><h3>Arvl.</h3></td>
-                    </tr>
-                    <?php
-                        if($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()){
-                    ?>
-                    <tr>
-                        <td><?php echo $row["flightNo"]?></td>
-                        <td><?php echo $row["destination"]?></td>
-                        <td><?php echo $row["origin"]?></td>
-                        <td><?php echo $row["departTime"]?></td>
-                        <td><?php echo $row["arrivalTime"]?></td>
-                    </tr>
-                    <?php
-                            }
-                        }
-                    ?>
-                </table>
-            </div>
+        </div>
+        <div class="flight-table">
+            <table id="flight-data">
+                <tr>
+                    <th><h3>Flight No.</h3></th>
+                    <th><h3>Destination</h3></th>
+                    <th><h3>Origin</h3></th>
+                    <th><h3>Depart Time</h3></th>
+                    <th><h3>Arrival Time</h3></th>
+                </tr>
+                <?php
+                    if($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()){
+                ?>
+                <tr>
+                    <td><?php echo $row["flightNo"]?></td>
+                    <td><?php echo $row["destination"]?></td>
+                    <td><?php echo $row["origin"]?></td>
+                    <td><?php echo $row["departTime"]?></td>
+                    <td><?php echo $row["arrivalTime"]?></td>
+                </tr>
+                <?php
+                      }
+                    }
+                ?>
+            </table>
         </div>
 
         <?php
             $conn->close();
         ?>
-        
-        <button onclick="window.location='flight-booking.php'">HOME</button>
 
     </body>
 </html>

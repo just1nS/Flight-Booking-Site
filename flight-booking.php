@@ -41,7 +41,7 @@
         ?>
 
         <div class="navbar">
-            <a href="/flight-booking.php">Flight Booking</a>
+            <a class="active" href="/flight-booking.php">Flight Booking</a>
             <a href="/bookings.php">Your Bookings</a>
             <div class="dropMenu">
                 <?php 
@@ -57,13 +57,15 @@
             </div>
         </div>
 
-        <div>
-            <table>
+        <div class="flight-table">
+            <table id="flight-data">
                 <tr>
-                    <td><h3>Flight No.</h3></td>
-                    <td><h3>Destination</h3></td>
-                    <td><h3>Deprt.</h3></td>
-                    <td><h3>Arvl.</h3></td>
+                    <th><h3>Flight No.</h3></th>
+                    <th><h3>Destination</h3></th>
+                    <th><h3>Origin</h3></th>
+                    <th><h3>Depart Time</h3></th>
+                    <th><h3>Arrival Time</h3></th>
+                    <th><h3>Reserve</h3></th>
                 </tr>
                 <?php
                     if($result->num_rows > 0) {
@@ -78,7 +80,7 @@
                     <td>
                         <form action="/bookingValidation.php" method="post">
                             <input type="hidden" name="flightNo" id="flightNo" value="<?php echo $row["flightNo"]?>">
-                            <input type="submit" name="submit" value="BOOK">
+                            <input type="submit" name="submit" value="Book Now" class="book-button">
                         </form>
                     </td>
                 </tr>

@@ -25,19 +25,15 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $bookedFlightNo = $_POST['flightNo'];
     }
-
-    echo "Booking Flight: " . $bookedFlightNo;
     
     $sql = "insert into bookings values('$user', '$bookedFlightNo');";
 
     if($conn->query($sql) === TRUE){
-        echo "Flight Successfully Booked!";
+        header('location: /bookings.php', true, 301);
     }
     else{
         echo "error: " . $sql . "<br>" . $conn->error;
     }
-
-    echo "<button onclick=\"window.location='flight-booking.php'\">HOME</button>";
 
     $conn->close();
 
