@@ -5,22 +5,27 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div>
-            <h1>Sign Up</h1>
+        <div class="sidebanner"></div>
+        <div class="registration">
+            <a href="/login.php">Back</a>
+            <div>
+                <h1 class="registration-header">Sign Up</h1>
+            </div>
+            <div>
+                <form method="POST" action="/sign-up.php" id="sign-up">
+                    <input type="text" id="username" name="username" placeholder="Username" maxlength="25" size="25" required>
+                    <input type="password" id="password" name="password" placeholder="Password" maxlength="25" size="25" required><br>
+                    <input type="text" id="fName" name="fName" placeholder="First Name" maxlength="25" size="25" required>
+                    <input type="text" id="lName" name="lName" placeholder="Last Name" maxlength="25" size="25" required><br>
+                    <input type="text" id="email" name="email" placeholder="Email" maxlength="25" size="25" required><br>
+                    <input type="text" id="address" name="address" placeholder="Street Adress" maxlength="25" size="25" required>
+                    <input type="text" id="city" name="city" placeholder="City" maxlength="25" size="25" required> <br>
+                    <input type="text" name="state" id="state" placeholder="State" maxlength="2" size="2" required>
+                    <input type="text" name="zip" id="zip" placeholder="Zip" maxlength="5" size="5" required><br>
+                    <button type="submit" id="registrationSubmit">Sign Up</button>
+                </form>
+            </div>
         </div>
-        <div>
-            <form method="POST" action="/sign-up.php">
-                <input type="text" id="fName" name="fName" placeholder="First Name"><br>
-                <input type="text" id="lName" name="lName" placeholder="Last Name"><br>
-                <input type="text" id="username" name="username" placeholder="Username"><br>
-                <input type="password" id="password" name="password" placeholder="Password"><br>
-                <input type="text" id="email" name="email" placeholder="Email"><br>
-                <input type="text" id="address" name="address" placeholder="Street Adress"><br>
-                <input type="text" id="city" name="city" placeholder="City">
-                <input type="text" name="state" id="state" placeholder="State" maxlength="2" size="2">
-                <input type="text" name="zip" id="zip" placeholder="Zip" maxlength="5" size="5">
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
+        <div class="blue-sidebar"></div>
     </body>
 </html>
