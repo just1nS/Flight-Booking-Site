@@ -25,7 +25,7 @@
 
     
     $insertIntoUsers = "insert into users values('$user', '$pass', '$email');";
-    $insertIntoBilling = "insert into billing values('$address', '$city', '$cState', '$zip', '$username', '$firstName', '$lastName');";
+    $insertIntoBilling = "insert into billing values('$address', '$city', '$cState', '$zip', '$user', '$firstName', '$lastName');";
 
     $conn->query($insertIntoUsers);
     $conn->query($insertIntoBilling);
