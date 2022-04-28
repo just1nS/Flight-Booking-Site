@@ -6,6 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <title>Login</title>
     </head>
     <body class="login-background-image">
         <div class="login-background">

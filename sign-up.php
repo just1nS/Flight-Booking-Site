@@ -38,6 +38,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <title>Sign Up</title>
     </head>
     <body>  
         <div class="sidebanner"></div>

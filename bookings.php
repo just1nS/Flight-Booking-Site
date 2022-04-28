@@ -31,6 +31,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <title>Your Flight Bookings</title>
         <script src="flight-booking.js"></script>
     </head>
     <body>
